@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Kelapa</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    /* align-items: center; */
+	align-items: flex-start;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .calculator {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+  }
+  h1 {
+    margin-top: 0;
+  }
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  #results {
+    font-size: 18px;
+    margin-top: 15px;
+    text-align: left;
+  }
+    input#input1, #input2, #input3, #input9 {
+    width: 100%;
+}
+select:invalid { color: gray; }
+}
+</style>
+</head>
+<body>
+<div class="calculator">
+  <h1>Kalkulator Kelapa</h1>
+  <h5>Dibuat Oleh : Irvan Sikajudin</h5>
+  <form id="calculatorForm">
+    <table>
+	<tr><th><td>Tonase Kelapa : </td><th></th><td><input type="number" id="input1" value="8000"></td></th></tr>
+    <tr><th><td>Harga/Kg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </td><th></th><td><input type="number" id="input2" value="1400"></td></th></tr>
+    <tr><th><td>Ongkir Kelapa : </td><th></th><td><input type="number" id="input3" value="250000"></td></th></tr>
+	<tr><th><td>Harga Kopra &nbsp;&nbsp;: </td><th></th><td><input type="number" id="input9" value="6300"></td></th></tr>
+	</table>
+    <select id="input4">
+      <option value="0" disabled selected>Pilih Nominal Upah/Kg</option>
+	  <option value="0">0</option>
+      <option value="400">400</option>
+      <option value="600">600</option>
+	  <option value="800">800</option>
+      <!-- Tambahkan opsi lainnya sesuai kebutuhan -->
+    </select>
+    <select id="input5">
+      <option value="0" disabled selected>Pilih Persentase Daging Putih</option>
+	  <option value="0">0%</option>
+      <option value="0.32">32%</option>
+      <option value="0.325">32,5%</option>
+      <!-- Tambahkan opsi lainnya sesuai kebutuhan -->
+    </select>
+    <select id="input6">
+      <option value="0" disabled selected>Pilih Persentase Daging & Kulit Ari</option>
+	  <option value="0">0%</option>
+      <option value="0.38">38%</option>
+      <option value="0.3885">38,85%</option>
+      <!-- Tambahkan opsi lainnya sesuai kebutuhan -->
+    </select>
+    <select id="input7">
+      <option value="0" disabled selected>Pilih Persentase Kopra Kering</option>
+	  <option value="0">0%</option>
+      <option value="0.26">26%</option>
+      <option value="0.26418">26,418%</option>
+      <!-- Tambahkan opsi lainnya sesuai kebutuhan -->
+    </select>
+    <select id="input8">
+      <option value="0" disabled selected>Pilih Persentase Kulit Ari Basah</option>
+      <option value="0">0%</option>
+      <option value="0.057">5.7%</option>
+      <!-- Tambahkan opsi lainnya sesuai kebutuhan -->
+    </select>
+
+    <button type="button" onclick="calculate()">Hitung</button>
+  </form>
+  <div id="results"></div>
+</div>
+<script>
+  function calculate() {
+    var input1 = parseFloat(document.getElementById("input1").value);
+    var input2 = parseFloat(document.getElementById("input2").value);
+    var input3 = parseFloat(document.getElementById("input3").value);
+    var input4 = parseFloat(document.getElementById("input4").value);
+    var input5 = parseFloat(document.getElementById("input5").value);
+    var input6 = parseFloat(document.getElementById("input6").value);
+    var input7 = parseFloat(document.getElementById("input7").value);
+    var input8 = parseFloat(document.getElementById("input8").value);
+    var input9 = parseFloat(document.getElementById("input9").value);
+    
+    var result1 = input1 * input2
+    var result2 = input1 * input5;
+    var result3 = input1 * input6;
+    var result4 = input1 * input7;
+    var result5 = input1 * input8;
+    var result6 = result2 * input4;
+	var result7 = result3 * input4;
+	
+	var result11 = (input1 * input2).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+	var result66 = (result2 * input4).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+	var result77 = (result3 * input4).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+	var input33 = (input3).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+	var input44 = (input4).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+	var kk = (result4*input9).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+	var tm = (result1 + input3 + (result3*input4)).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+	var lbkdk = ((result4*input9)-(result1 + input3 + (result3*input4))).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+	
+
+    
+    var results = `
+      Modal Beli Kelapa	: ${result11}<br>
+      Daging Kelapa Putih: ${result2} Kg <br>
+      Daging Kelapa : ${result3} Kg <br>
+      Kopra Kering : ${result4} Kg <br>
+      Kulit Ari Basah : ${result5} Kg <br><br>
+	  Upah/Kg: ${input44}<br>
+      Upah dari DKP: ${result66}<br>
+	  Upah dari DK: ${result77}<br>
+	  Ongkir : ${input33}<br><br>
+	  Total Modal : ${tm} <br>
+	  Penjualan Kopra Kering : ${kk} <br>
+	  Laba-rugi Kopra DK: ${lbkdk}
+
+    `;
+    
+    document.getElementById("results").innerHTML = results;
+  }
+</script>
+</body>
+</html>
