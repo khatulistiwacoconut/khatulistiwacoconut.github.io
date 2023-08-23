@@ -20,8 +20,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    /* width: 400px; */
-  width: 100%;
+    width: 400px;
     text-align: center;
   }
   h1 {
@@ -70,11 +69,15 @@ select:invalid { color: gray; }
     <tr><th><td>Harga/Kg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </td><th></th><td><input type="number" id="input2" value="1400"></td></th></tr>
     <tr><th><td>Ongkir Kelapa : </td><th></th><td><input type="number" id="input3" value="250000"></td></th></tr>
 	<tr><th><td>Harga Kopra &nbsp;&nbsp;: </td><th></th><td><input type="number" id="input9" value="6300"></td></th></tr>
+	<tr><th><td>Harga Daging P:			  </td><th></th><td><input type="number" id="input10" value="6150"></td></th></tr>
 	</table>
     <select id="input4">
       <option value="0" disabled selected>Pilih Nominal Upah/Kg</option>
 	  <option value="0">0</option>
+	  <option value="200">200</option>
+	  <option value="300">300</option>
       <option value="400">400</option>
+	  <option value="500">500</option>
       <option value="600">600</option>
 	  <option value="800">800</option>
       <!-- Tambahkan opsi lainnya sesuai kebutuhan -->
@@ -96,6 +99,7 @@ select:invalid { color: gray; }
     <select id="input7">
       <option value="0" disabled selected>Pilih Persentase Kopra Kering</option>
 	  <option value="0">0%</option>
+	  <option value="0.228">22,8%</option>
       <option value="0.26">26%</option>
       <option value="0.26418">26,418%</option>
       <!-- Tambahkan opsi lainnya sesuai kebutuhan -->
@@ -137,8 +141,10 @@ select:invalid { color: gray; }
 	var input33 = (input3).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
 	var input44 = (input4).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
 	var kk = (result4*input9).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+	var dp = result2
 	var tm = (result1 + input3 + (result3*input4)).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
-	var lbkdk = ((result4*input9)-(result1 + input3 + (result3*input4))).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+	var lbkdk = ((result4*input9)- (result1 + input3 + (result3*input4))).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+	var lrdp  = ((result2*input10)-(result1 + input3 + (result2*input4))).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
 	
 
     
@@ -154,7 +160,7 @@ select:invalid { color: gray; }
 	  Ongkir : ${input33}<br><br>
 	  Total Modal : ${tm} <br>
 	  Penjualan Kopra Kering : ${kk} <br>
-	  Laba-rugi Kopra DK: ${lbkdk}
+	  Laba-rugi Kopra DK : ${lbkdk}
 
     `;
     
